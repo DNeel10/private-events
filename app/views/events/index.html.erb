@@ -1,7 +1,15 @@
 <h1>Events!</h1>
 
+<h3> List of Upcoming Events </h3>
 <div>
-  <% @events.each do |event| %>
-    <%= event.name %>
-  <% end %>
+  <ul>
+    <% @events.each do |event| %>
+     <li><%= link_to event.name, event_path(event) %></li>
+      <ul>
+          <li>Creator: <%= event.creator.email %></li>
+          <li>Location: <%= event.location %></li>
+        </ul><br>
+      </li>
+    <% end %>
+  </ul>
 </div>
