@@ -1,3 +1,11 @@
+<% if user_signed_in? %>
+  <p>Signed in as <%= link_to current_user.email, current_user %></p>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+<% else %>
+  <%= button_to "Sign In", new_user_session_path %>
+<% end %>
+
+
 <h1>Events!</h1>
 
 <h3> List of Upcoming Events </h3>
@@ -6,10 +14,7 @@
     <% @events.each do |event| %>
      <li><%= link_to event.name, event_path(event) %></li>
       <ul>
-          <li>Creator: <%= event.creator.email %></li>
-          <li>Location: <%= event.location %></li>
-        </ul><br>
-      </li>
+        <li> Creator: <%= event.creator.email %></li>
     <% end %>
   </ul>
 </div>
