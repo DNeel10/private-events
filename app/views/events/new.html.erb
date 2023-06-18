@@ -1,5 +1,5 @@
 <h3> Create a new Event </h3>
-<%= form_with model: @event do |form| %>
+<%= form_with model: @event, scope: :created_events do |form| %>
   <%= form.label :name, "Event Name" %>
   <%= form.text_field :name, placeholder: "Birthday Party" %><br>
   <%= form.label :date, "Date: " %>

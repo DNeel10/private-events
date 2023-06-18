@@ -11,10 +11,13 @@
 <h3> List of Upcoming Events </h3>
 <div>
   <ul>
-    <% @events.each do |event| %>
-     <li><%= link_to event.name, event_path(event) %></li>
+    <li><% Event.all.includes(:creator).each do |event| %>
+      <%= link_to event.name, event_path(event) %>
       <ul>
         <li> Creator: <%= event.creator.email %></li>
-    <% end %>
+      </ul>
+    <% end %></li>
   </ul>
 </div>
+
+<%= button_to link_to "Create Event",  new_event_path %>
