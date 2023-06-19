@@ -13,6 +13,6 @@
   </li>
 </ul>
 
-<%= button_to "Attend Event", event_attendances_path(@event), params: { "attendances" => {event_attendee_id: current_user, attended_event_id: @event } } %>
+<%= button_to "Attend Event", event_attendances_path(@event), params: { "attendances" => {attended_event_id: @event } } %>
 
 <%= link_to "Home", root_path %>
