@@ -1,7 +1,6 @@
 class AttendancesController < ApplicationController
 
   def create
-    @event = Event.find(params[:event_id])
     @attendance = current_user.attendances.create(attendance_params)
 
     if @attendance.save

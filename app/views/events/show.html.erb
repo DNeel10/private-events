@@ -12,5 +12,5 @@
   </li>
 </ul>
 
-<%= button_to "Attend Event", event_attendances_path(@event), params: { "attendances" => {attended_event_id: @event } } %>
+<%= button_to "Attend Event", attendances_path, params: { "attendances" => {attended_event_id: @event } } %>
 

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
 
   resources :users
-  resources :events do
-    resources :attendances
-  end
+  resources :events
+  resources :attendances
 end

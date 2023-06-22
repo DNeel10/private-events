@@ -2,12 +2,13 @@
 <h1><%= @user.email %>'s Events</h1>
 
 <h2>Attending Events</h2>
-<ul><% @user.attended_events.each do |event| %>
-  <li><%= link_to event.name, event_path(event) %></li>
+<ul><% @user.attendances.each do |attendance| %>
+  <li><%= link_to attendance.attended_event.name, event_path(attendance.attended_event) %></li>
   <ul>
-    <li>Location: <%= event.location %></li>
-    <li>Date: <%= event.date.strftime("%b %-d, %Y") %></li><br>
+    <li>Location: <%= attendance.attended_event.location %></li>
+    <li>Date: <%= attendance.attended_event.date.strftime("%b %-d, %Y") %></li><br>
   </ul>
+  <%= button_to "Remove Attendance", attendance_path(attendance), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you no longer wnat to attend this event?" } %>
 <% end %></ul>
 
 <h2>Created Events</h2>
