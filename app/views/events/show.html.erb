@@ -1,13 +1,12 @@
 <h2><%= @event.name %></h2>
 
 <ul>
-  <li><%= @event.name %></li>
-  <li><%= @event.location %></li>
-  <li><%= @event.date %></li>
+  <li>Location: <%= @event.location %></li>
+  <li>Date: <%= @event.date.strftime("%b %-d, %Y") %></li>
   <li>Attendees: 
     <ul>
       <% @event.attendees.each do |attendee| %>
-        <li><%= attendee.email %></li>
+        <li><%= link_to attendee.email, user_path(attendee) %></li>
       <% end %>
     </ul>
   </li>
@@ -15,4 +14,3 @@
 
 <%= button_to "Attend Event", event_attendances_path(@event), params: { "attendances" => {attended_event_id: @event } } %>
 
-<%= link_to "Home", root_path %>

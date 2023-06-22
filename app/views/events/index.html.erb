@@ -8,16 +8,32 @@
 
 <h1>Events!</h1>
 
+
+<div class="event-container">
 <h3> List of Upcoming Events </h3>
-<div>
-  <ul>
-    <li><% Event.all.includes(:creator).each do |event| %>
-      <%= link_to event.name, event_path(event) %>
-      <ul>
-        <li> Creator: <%= event.creator.email %></li>
-      </ul>
-    <% end %></li>
-  </ul>
+  <div class="upcoming-events">
+    <ul><% Event.upcoming.includes(:creator).each do |event| %>
+      <li><%= link_to event.name, event_path(event) %>
+        <ul>
+          <li> Creator: <%= event.creator.email %></li>
+        </ul>
+      <% end %></li>
+    </ul>
+  </div>
+
+  <div class="past-events">
+  <h3> List of Past Events </h3>
+    <ul><% Event.past.includes(:creator).each do |event| %>
+      <li><%= link_to event.name, event_path(event) %>
+        <ul>
+          <li> Creator: <%= event.creator.email %></li>
+        </ul>
+      <% end %></li>
+    </ul>
+  </div>
 </div>
+
+
+
 
 <%= button_to link_to "Create Event",  new_event_path %>

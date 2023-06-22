@@ -1,0 +1,10 @@
+<h3>Edit your Event Event </h3>
+<%= form_with model: @event, scope: :created_events do |form| %>
+  <%= form.label :name, "Event Name" %>
+  <%= form.text_field :name, placeholder: "Birthday Party" %><br>
+  <%= form.label :date, "Date: " %>
+  <%= form.date_field :date %><br>
+  <%= form.label :location, "Location: " %>
+  <%= form.text_field :location, placeholder: "My House" %><br>
+  <%= form.submit %>
+<% end %>

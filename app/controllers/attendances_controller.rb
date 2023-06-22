@@ -7,8 +7,16 @@ class AttendancesController < ApplicationController
     if @attendance.save
       redirect_back(fallback_location: root_path)
     else
-      render 'events/show', flash.now[:notice] = "You were not added to the attendee list"
+      flash.now[:notice] = "You were not added to the attendee list"
+      render 'events/show', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @attendance = Attendance.find(params[:id])
+    @attendance.destroy
+
+    redirect_back(fallback_location: root_path)
   end
 
   private

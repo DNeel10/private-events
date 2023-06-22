@@ -1,6 +1,22 @@
 
 <h1><%= @user.email %>'s Events</h1>
 
-<ul><% @user.events.each do |event| %>
-  <li><%= event.name %></li>
+<h2>Attending Events</h2>
+<ul><% @user.attended_events.each do |event| %>
+  <li><%= link_to event.name, event_path(event) %></li>
+  <ul>
+    <li>Location: <%= event.location %></li>
+    <li>Date: <%= event.date.strftime("%b %-d, %Y") %></li><br>
+  </ul>
+<% end %></ul>
+
+<h2>Created Events</h2>
+<ul><% @user.created_events.each do |created_event| %>
+  <li><%= link_to created_event.name, event_path(created_event) %></li>
+  <ul>
+    <li>Location: <%= created_event.location %></li>
+    <li>Date: <%= created_event.date.strftime("%b %-d, %Y") %></li><br>
+  </ul>
+  <%= button_to "Cancel Event", event_path(created_event), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this event?" } %>
+  <%= button_to "Edit Event", edit_event_path(created_event) %>
 <% end %></ul>
