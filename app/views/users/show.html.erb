@@ -8,7 +8,10 @@
     <li>Location: <%= attendance.attended_event.location %></li>
     <li>Date: <%= attendance.attended_event.date.strftime("%b %-d, %Y") %></li><br>
   </ul>
-  <%= button_to "Remove Attendance", attendance_path(attendance), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you no longer wnat to attend this event?" } %>
+  <%= button_to "Remove Attendance", attendance_path(attendance), method: :delete, data: { 
+      turbo_method: :delete, 
+      turbo_confirm: "Are you sure you no longer wnat to attend this event?" 
+    } %>
 <% end %></ul>
 
 <h2>Created Events</h2>
@@ -18,6 +21,9 @@
     <li>Location: <%= created_event.location %></li>
     <li>Date: <%= created_event.date.strftime("%b %-d, %Y") %></li><br>
   </ul>
-  <%= button_to "Cancel Event", event_path(created_event), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this event?" } %>
-  <%= button_to "Edit Event", edit_event_path(created_event) %>
+  <%= link_to "Edit Event", edit_event_path(created_event) %>
+  <%= link_to "Cancel Event", event_path(created_event), data: { 
+      turbo_method: :delete, 
+      turbo_confirm: "Are you sure you want to cancel this event?" 
+    } %><br><br>
 <% end %></ul>

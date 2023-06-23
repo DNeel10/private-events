@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event)
     else
+      flash.now[:notice] = "Event not saved. Please verify your information and try again."
       render :new, status: :unprocessable_entity
     end
   end
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      redirect_to event_path(@event)
+      redirect_to @event
     else
       flash.now[:notice] = "Update unsuccessful"
       render :edit, status: :unprocessable_entity

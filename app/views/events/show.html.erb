@@ -12,5 +12,8 @@
   </li>
 </ul>
 
-<%= button_to "Attend Event", attendances_path, params: { "attendances" => {attended_event_id: @event } } %>
-
+<% if @event.attendees.include?(current_user) %> 
+  <p> You are attending this event </p>
+<% else %>
+   <%= button_to "Attend Event", attendances_path, params: { "attendances" => {attended_event_id: @event } }  %>
+<% end %>
