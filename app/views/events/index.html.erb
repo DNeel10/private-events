@@ -12,7 +12,7 @@
 <div class="event-container">
 <h3> List of Upcoming Events </h3>
   <div class="upcoming-events">
-    <ul><% Event.upcoming.includes(:creator).each do |event| %>
+    <ul><% @upcoming.each do |event| %>
       <li><%= link_to event.name, event_path(event) %>
         <ul>
           <li> Creator: <%= event.creator.email %></li>
@@ -23,7 +23,7 @@
 
   <div class="past-events">
   <h3> List of Past Events </h3>
-    <ul><% Event.past.includes(:creator).each do |event| %>
+    <ul><% @past.each do |event| %>
       <li><%= link_to event.name, event_path(event) %>
         <ul>
           <li> Creator: <%= event.creator.email %></li>
