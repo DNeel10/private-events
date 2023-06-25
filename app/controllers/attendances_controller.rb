@@ -5,7 +5,7 @@ class AttendancesController < ApplicationController
     @attendance = current_user.attendances.create(attendance_params)
 
     if @attendance.save
-      redirect_back(fallback_location: root_path)
+      redirect_to @event
     else
       flash.now[:notice] = "You were not added to the attendee list"
       render 'events/show', status: :unprocessable_entity
@@ -13,10 +13,11 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:attendances][:attended_event_id])
     @attendance = Attendance.find(params[:id])
     @attendance.destroy
 
-    redirect_back(fallback_location: root_path)
+    redirect_to @event
   end
 
   private
