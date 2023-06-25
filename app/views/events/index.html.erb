@@ -10,7 +10,7 @@
 
 
 <div class="event-container">
-<h3> List of Upcoming Events </h3>
+  <h3> List of Upcoming Events </h3>
   <div class="upcoming-events">
     <ul><% @upcoming.each do |event| %>
       <li><%= link_to event.name, event_path(event) %>
@@ -21,8 +21,8 @@
     </ul>
   </div>
 
-  <div class="past-events">
   <h3> List of Past Events </h3>
+  <div class="past-events">
     <ul><% @past.each do |event| %>
       <li><%= link_to event.name, event_path(event) %>
         <ul>
