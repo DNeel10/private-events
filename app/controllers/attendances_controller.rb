@@ -14,11 +14,10 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:attendances][:attended_event_id])
     @attendance = Attendance.find(params[:id])
     @attendance.destroy
 
-    redirect_to @event
+    redirect_to current_user
   end
 
   private
